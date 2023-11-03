@@ -1,0 +1,90 @@
+<launch>
+
+  <!-- Launch SICK LIDARLOCK -->
+  <include file="$(find sick_lidar_localization)/launch/sick_lidar_localization.launch" />
+
+  <!-- Launch TF transfer -->
+  <include file="$(find robot_dhi_1)/tf/tf.launch" />
+
+  <!-- Forklift model to rviz-->
+  <arg name="model" default="$(find model_wozek)/urdf/model_wozek.urdf"/>
+  <arg name="gui" default="true" />
+  <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
+  <!-- <node if="$(arg gui)" name="joint_state_publisher" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
+  <node unless="$(arg gui)" name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" /> -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" /> 
+ 
+ <!-- Data transmision between ROS and PLC - (Curtis - Servo) -->  
+  <!-- Subscribe: /comand_curtis_vel, /comand_servo_angle -->
+  <!-- Publish: /wozek_angle_tick, servo_angle_tick-->
+  <node pkg="robot_dhi_1" type="odczyt_encodera.py" name="odczyt_encodera" output="screen"/>
+  <node pkg="robot_dhi_1" type="drive_control_new.py" name="drive_control_new" output="screen"/>
+  <node pkg="robot_dhi_1" type="detectors1.py" name="detectors1" output="screen"/>
+  <node pkg="robot_dhi_1" type="base_controler" name="base_controler" output="screen"/>
+  <node pkg="robot_dhi_1" type="lifting_module.py" name="lifting_module" output="screen"/>
+  <node pkg="robot_dhi_1" type="robot_visual_state.py" name="robot_visual_state" output="screen"/>
+
+  
+  
+  <!-- Wheel Odometry Publisher -->
+  <!-- Subscribe: /wozek_angle_tick /servo_angle, /initial_2d -->
+  <!-- Publish: /odom -->
+  <!-- odom to base_footprint transform publisher -->
+  <node pkg="robot_dhi_1" type="odom_pub" name="odom_pub"/>
+
+  <!-- Initial Pose and Goal Publisher -->
+  <!-- Publish: /initialpose, /move_base_simple/goal -->
+  <node pkg="rviz" type="rviz" name="rviz" respawn="false" args="-d $(find robot_dhi_1)/param/model.rviz">
+  </node>  
+  
+  <!-- Subscribe: /initialpose, /move_base_simple/goal -->
+  <!-- Publish: /initial_2d, /goal_2d --> 
+  <node pkg="robot_dhi_1" type="rviz_click_to_2d" name="rviz_click_to_2d">
+  </node>  
+  
+ <!-- Lidar Data Publisher Using sick_safetyscanners -->
+  <!-- Used for obstacle avoidance and can be used for mapping --> 
+  <!-- Publish: /scan -->
+
+  <include file="$(find sick_safetyscanners)/launch/sensor_1.launch"/>
+  <include file="$(find sick_safetyscanners)/launch/sensor_2.launch"/>
+  <include file="$(find ira_laser_tools)/launch/laserscan_multi_merger.launch"/>
+  <!-- <include file="$(find bayes_people_tracker)/launch/people_tracker.launch"/> -->
+  <!-- <node pkg="people_tracking_filter" type="people_tracker" name="people_tracker" output="screen">
+  </node> -->
+
+  
+<!-- Map Server -->
+  <!-- Publish: /mapp, /map_metadata -->
+  <node pkg="map_server" name="map_server" type="map_server" args="$(find robot_dhi_1)/param/zagroda_testowa.yaml"/>
+  
+  <!-- Move Base Node -->
+  <!-- Subscribe: /move_base_simple/goal -->
+  <!-- Publish: /cmd_vel -->
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <rosparam file="$(find robot_dhi_1)/param/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find robot_dhi_1)/param/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find robot_dhi_1)/param/local_costmap_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find robot_dhi_1)/param/global_costmap_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find robot_dhi_1)/param/teb_local_planner_params.yaml" command="load" />
+    <rosparam file="$(find robot_dhi_1)/param/costmap_converter_params.yaml" command="load" />
+
+    <!-- <param name="base_global_planner" value="global_planner/GlobalPlanner" />
+		<param name="planner_frequency" value="10.0" />
+		<param name="planner_patience" value="5.0" />
+
+		<param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" />
+		<param name="controller_frequency" value="10.0" />
+		<param name="controller_patience" value="15.0" />
+
+        <param name="clearing_rotation_allowed" value="false" /> Our carlike robot is not able to rotate in place -->
+
+  </node>  
+  
+  <!-- Launch AMCL for carlike robot -->
+
+  <!-- <node pkg="amcl" type="amcl" name="amcl" output="screen">
+    <rosparam file="$(find robot_dhi_1)/param/amcl_params.yaml" command="load" />
+  </node> -->
+
+</launch>

@@ -1,0 +1,15 @@
+bool LeftScanerResetEmergencyField
+bool LeftScannerResetSoftStopField
+bool LeftScannerResetReducedSpeedField
+bool RightScannerResetEmergencyField
+bool RightScannerResetSoftStopField
+bool RightScannerResetReducedSpeedField
+bool LeftScannerReset
+bool LeftScannerResetConnection
+bool RightScannerReset
+bool RightScannerResetConnection
+bool ScannersFieldSignalA1
+bool ScannersFieldSignalA2
+bool ScannersFieldSignalB1
+bool ScannersFieldSignalB2
+bool ScannersActivate

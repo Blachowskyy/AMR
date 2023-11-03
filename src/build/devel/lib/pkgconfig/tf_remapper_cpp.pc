@@ -1,0 +1,8 @@
+prefix=/home/ros/catkin_ws/src/build/devel
+
+Name: tf_remapper_cpp
+Description: Description of tf_remapper_cpp
+Version: 1.1.1
+Cflags: -I/home/ros/catkin_ws/src/tf_remapper_cpp/include
+Libs: -L${prefix}/lib -ltf_remapper_cpp
+Requires: xmlrpcpp roscpp tf2_msgs

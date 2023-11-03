@@ -1,0 +1,7 @@
+<launch>
+    <include file="$(find ira_laser_tools)/launch/laserscan_multi_merger.launch" />
+    <include file="$(find sick_safetyscanners)/launch/sensor_1.launch" />
+    <include file="$(find sick_safetyscanners)/launch/sensor_2.launch" />
+    <include file="$(find robot_dhi_1)/tf/tf_test.launch" /> 
+    <node pkg="rviz" type="rviz" name="rviz" respawn="false" />
+</launch>

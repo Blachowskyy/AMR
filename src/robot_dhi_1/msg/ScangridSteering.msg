@@ -1,0 +1,3 @@
+bool ActivateLeftPaletteDetection
+bool ActivateRightPaletteDetection
+bool ActivateAllZones

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<robot name="liftruck">
+   <link name="base_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://robot_dhi_1/meshes/lifttruckmodel.dae"/>
+      </geometry>
+    </visual>
+   </link>
+</robot>

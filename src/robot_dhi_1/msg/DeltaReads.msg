@@ -1,0 +1,10 @@
+int ForksHeight
+bool ForksHeightLimiter
+int CargoWeight
+int TiltAxis1
+int TiltAxis2
+int BatteryVoltage
+int EncoderSpeed
+int EncoderDirection
+int ServoDirection
+int ServoAngle

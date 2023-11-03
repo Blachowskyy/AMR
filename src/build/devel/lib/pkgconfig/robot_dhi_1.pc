@@ -1,0 +1,8 @@
+prefix=/home/ros/catkin_ws/src/build/devel
+
+Name: robot_dhi_1
+Description: Description of robot_dhi_1
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

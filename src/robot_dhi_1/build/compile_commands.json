@@ -1,0 +1,47 @@
+[
+{
+  "directory": "/home/ros/catkin_ws/src/robot_dhi_1/build",
+  "command": "/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"robot_dhi_1\\\" -I/home/ros/catkin_ws/src/robot_dhi_1/build/devel/include -I/home/ros/catkin_ws/devel/include -I/home/ros/catkin_ws/src/navigation/move_base/include -I/home/ros/catkin_ws/src/geometry2/tf2_ros/include -I/home/ros/catkin_ws/src/geometry2/tf2/include -I/home/ros/catkin_ws/src/geometry2/tf2_msgs/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/include/eigen3 -I/usr/1oca1/1ib  -g   -std=c++11 -o CMakeFiles/eigen.dir/src/eigen.cpp.o -c /home/ros/catkin_ws/src/robot_dhi_1/src/eigen.cpp",
+  "file": "/home/ros/catkin_ws/src/robot_dhi_1/src/eigen.cpp"
+},
+{
+  "directory": "/home/ros/catkin_ws/src/robot_dhi_1/build",
+  "command": "/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"robot_dhi_1\\\" -I/home/ros/catkin_ws/src/robot_dhi_1/build/devel/include -I/home/ros/catkin_ws/devel/include -I/home/ros/catkin_ws/src/navigation/move_base/include -I/home/ros/catkin_ws/src/geometry2/tf2_ros/include -I/home/ros/catkin_ws/src/geometry2/tf2/include -I/home/ros/catkin_ws/src/geometry2/tf2_msgs/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/include/eigen3 -I/usr/1oca1/1ib  -g   -std=c++11 -o CMakeFiles/test_lidar.dir/src/test_lidar.cpp.o -c /home/ros/catkin_ws/src/robot_dhi_1/src/test_lidar.cpp",
+  "file": "/home/ros/catkin_ws/src/robot_dhi_1/src/test_lidar.cpp"
+},
+{
+  "directory": "/home/ros/catkin_ws/src/robot_dhi_1/build",
+  "command": "/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"robot_dhi_1\\\" -I/home/ros/catkin_ws/src/robot_dhi_1/build/devel/include -I/home/ros/catkin_ws/devel/include -I/home/ros/catkin_ws/src/navigation/move_base/include -I/home/ros/catkin_ws/src/geometry2/tf2_ros/include -I/home/ros/catkin_ws/src/geometry2/tf2/include -I/home/ros/catkin_ws/src/geometry2/tf2_msgs/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/include/eigen3 -I/usr/1oca1/1ib  -g   -std=c++11 -o CMakeFiles/rviz_click_to_2d.dir/src/rviz_click_to_2d.cpp.o -c /home/ros/catkin_ws/src/robot_dhi_1/src/rviz_click_to_2d.cpp",
+  "file": "/home/ros/catkin_ws/src/robot_dhi_1/src/rviz_click_to_2d.cpp"
+},
+{
+  "directory": "/home/ros/catkin_ws/src/robot_dhi_1/build",
+  "command": "/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"robot_dhi_1\\\" -I/home/ros/catkin_ws/src/robot_dhi_1/build/devel/include -I/home/ros/catkin_ws/devel/include -I/home/ros/catkin_ws/src/navigation/move_base/include -I/home/ros/catkin_ws/src/geometry2/tf2_ros/include -I/home/ros/catkin_ws/src/geometry2/tf2/include -I/home/ros/catkin_ws/src/geometry2/tf2_msgs/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/include/eigen3 -I/usr/1oca1/1ib  -g   -std=c++11 -o CMakeFiles/odom_pub.dir/src/odom_pub.cpp.o -c /home/ros/catkin_ws/src/robot_dhi_1/src/odom_pub.cpp",
+  "file": "/home/ros/catkin_ws/src/robot_dhi_1/src/odom_pub.cpp"
+},
+{
+  "directory": "/home/ros/catkin_ws/src/robot_dhi_1/build",
+  "command": "/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"robot_dhi_1\\\" -I/home/ros/catkin_ws/src/robot_dhi_1/build/devel/include -I/home/ros/catkin_ws/devel/include -I/home/ros/catkin_ws/src/navigation/move_base/include -I/home/ros/catkin_ws/src/geometry2/tf2_ros/include -I/home/ros/catkin_ws/src/geometry2/tf2/include -I/home/ros/catkin_ws/src/geometry2/tf2_msgs/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/include/eigen3 -I/usr/1oca1/1ib  -g   -std=c++11 -o CMakeFiles/base_controler.dir/src/base_controler.cpp.o -c /home/ros/catkin_ws/src/robot_dhi_1/src/base_controler.cpp",
+  "file": "/home/ros/catkin_ws/src/robot_dhi_1/src/base_controler.cpp"
+},
+{
+  "directory": "/home/ros/catkin_ws/src/robot_dhi_1/build/gtest/googlemock",
+  "command": "/bin/c++  -DGTEST_CREATE_SHARED_LIBRARY=1 -Dgmock_main_EXPORTS -isystem /usr/src/googletest/googlemock/include -isystem /usr/src/googletest/googlemock -isystem /usr/src/googletest/googletest/include -isystem /usr/src/googletest/googletest  -g -fPIC   -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++11 -DGTEST_HAS_PTHREAD=1 -std=c++11 -o CMakeFiles/gmock_main.dir/src/gmock_main.cc.o -c /usr/src/googletest/googlemock/src/gmock_main.cc",
+  "file": "/usr/src/googletest/googlemock/src/gmock_main.cc"
+},
+{
+  "directory": "/home/ros/catkin_ws/src/robot_dhi_1/build/gtest/googlemock",
+  "command": "/bin/c++  -DGTEST_CREATE_SHARED_LIBRARY=1 -Dgmock_EXPORTS -I/usr/src/googletest/googlemock/include -I/usr/src/googletest/googlemock -isystem /usr/src/googletest/googletest/include -isystem /usr/src/googletest/googletest  -g -fPIC   -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++11 -DGTEST_HAS_PTHREAD=1 -std=c++11 -o CMakeFiles/gmock.dir/src/gmock-all.cc.o -c /usr/src/googletest/googlemock/src/gmock-all.cc",
+  "file": "/usr/src/googletest/googlemock/src/gmock-all.cc"
+},
+{
+  "directory": "/home/ros/catkin_ws/src/robot_dhi_1/build/gtest/googletest",
+  "command": "/bin/c++  -DGTEST_CREATE_SHARED_LIBRARY=1 -Dgtest_main_EXPORTS -isystem /usr/src/googletest/googletest/include -isystem /usr/src/googletest/googletest  -g -fPIC   -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++11 -DGTEST_HAS_PTHREAD=1 -std=c++11 -o CMakeFiles/gtest_main.dir/src/gtest_main.cc.o -c /usr/src/googletest/googletest/src/gtest_main.cc",
+  "file": "/usr/src/googletest/googletest/src/gtest_main.cc"
+},
+{
+  "directory": "/home/ros/catkin_ws/src/robot_dhi_1/build/gtest/googletest",
+  "command": "/bin/c++  -DGTEST_CREATE_SHARED_LIBRARY=1 -Dgtest_EXPORTS -I/usr/src/googletest/googletest/include -I/usr/src/googletest/googletest  -g -fPIC   -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++11 -std=c++11 -o CMakeFiles/gtest.dir/src/gtest-all.cc.o -c /usr/src/googletest/googletest/src/gtest-all.cc",
+  "file": "/usr/src/googletest/googletest/src/gtest-all.cc"
+}
+]

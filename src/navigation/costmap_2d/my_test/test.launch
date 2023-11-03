@@ -1,0 +1,25 @@
+<launch>
+
+<node pkg="tf" type="static_transform_publisher" name="map_scanmatcher_broadcaster" args="0 0 0 0 0 0 map scanmatcher_frame 100"/>
+<node pkg="tf" type="static_transform_publisher" name="map_to_base_link_broadcaster" args="0 0 0 0 0 0 map base_link 100"/>
+<node pkg="tf" type="static_transform_publisher" name="base_to_scan_broadcaster" args="0 0 0 0 0 0 base_link scan 100"/>
+ 
+<node name="map_server" pkg="map_server" type="map_server" args="$(find costmap_2d)my_test/czesio.yaml " /> 
+
+
+<include file="$(find hector_mapping)/launch/mapping_default.launch" />
+   
+
+ <node name="costmap_node" pkg="costmap_2d" type="costmap_2d_node" >
+    
+    <rosparam file="$(find costmap_2d)my_test/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find costmap_2d)my_test/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find costmap_2d)my_test/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find costmap_2d)my_test/global_costmap_params.yaml" command="load" /> 
+    
+</node>
+
+
+
+ 
+</launch> 

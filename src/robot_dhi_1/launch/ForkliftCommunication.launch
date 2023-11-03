@@ -1,0 +1,14 @@
+<launch>
+  <!-- Skrypt komunikacyjny ze sterownikiem PLC -->
+  <node pkg="robot_dhi_1" type="ConnectionDeltaPLC.py" name="ConnectionDeltaPLC" output="screen" />
+  <!-- Konwerter informacji pobranych ze sterownika PLC -->
+  <node pkg="robot_dhi_1" type="SensorsConverter.py" name="SensorsConverter" output="screen"/>
+  <!-- Skrypt komunikacyjny z modulem bezpieczenstwa SICK FlexiCPU - Brama MODBUS -->
+  <node pkg="robot_dhi_1" type="ConnectionFlexisoft.py" name="flexiConnectionFlexisoftsoft" output="screen"/>
+  <!-- Skrypt obslugujacy czytnik kart NFC -->
+  <node pkg="robot_dhi_1" type="NFCServices.py" name="NFCServices" output="screen"/>
+  <!-- Skrypt komunikacyjny z systemem zarzadzajacym flota - FMS -->
+  <!-- <node pkg="robot_dhi_1" type="TcpIpServer.py" name="TcpIpServer" output="screen"/> -->
+  <!-- Konwerter informacji enkodera -->
+  <node pkg="robot_dhi_1" type="EncoderConverter.py" name="EncoderConverter" output="screen"/>
+</launch>

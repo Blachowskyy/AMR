@@ -1,0 +1,12 @@
+<launch>
+  <node pkg="tf" type="static_transform_publisher" name="odom_to_base_footprint" args="0 0 0 0 0 0 odom base_footprint 30" />
+  <node pkg="tf" type="static_transform_publisher" name="base_footprint_to_base_link" args="0 0 0.19 0 0 0 base_link odom 30" />
+  <node pkg="tf" type="static_transform_publisher" name="scanmatcher_to_base_link_broadcaster" args="0 0 0 0 0 0 base_footprint scanmatcher_frame 100"/>
+  <node pkg="tf" type="static_transform_publisher" name="base_link_to_map_broadcaster" args="0 0 0 0 0 0 map base_link 100"/>
+  <node pkg="tf" type="static_transform_publisher" name="sensor_1_to_scan_multi_broadcaster" args=" 0.250  -0.267 0 0 0 0 scan_multi sensor_1 100"  />
+  <node pkg="tf" type="static_transform_publisher" name="sensor_2_to_scan_multi_broadcaster" args="-0.250   0.267 0 0 0 0 scan_multi sensor_2 100"  />
+  <node pkg="tf" type="static_transform_publisher" name="cart_frame_to_scanmatcher_frame_broadcaster" args="0 0 0 0 0 0 scanmatcher_frame cart_frame 100"  />
+  <node pkg="tf" type="static_transform_publisher" name="scan_multi_to_scanmatcher_frame_broadcaster" args="0 0 0 0 0 0 scanmatcher_frame scan_multi 100"  />
+  <node pkg="tf" type="static_transform_publisher" name="merged_cloud_to_scanmatcher_frame_broadcaster" args="0 0 0 0 0 0 scanmatcher_frame merged_cloud 100"  />
+</launch>
+

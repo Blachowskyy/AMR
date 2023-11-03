@@ -1,0 +1,348 @@
+2023-04-20T15:24:35.930051+0200 INFO =============NEW STARTUP==============
+2023-04-20T15:24:37.929619+0200 INFO Forklift autodiagnostic: Started: Waiting for ping test result...
+2023-04-20T15:25:01.929706+0200 INFO Forklift autodiagnostic: Ping test passed!
+2023-04-20T15:25:02.596325+0200 INFO Forklift autodiagnostic: Ping test passed, communication OK
+2023-04-20T15:25:03.929793+0200 INFO Forklift autodiagnostic: Starting steering test..
+2023-04-20T15:25:04.596441+0200 INFO Testing first angle...
+2023-04-20T15:25:08.596438+0200 INFO Testing third angle...
+2023-04-20T15:25:10.596335+0200 INFO Forklift autodiagnostic: Servo test passed. Steering OK
+2023-04-20T15:25:11.263000+0200 INFO Forklift autodiagnostic: Lifting module test started...
+2023-04-20T15:25:11.929690+0200 DEBUG Forklift autodiagnostic: Starting lifting test...
+2023-04-20T15:25:21.929661+0200 INFO Forklift autodiagnostic: Lifting test passed!
+2023-04-20T15:25:22.596376+0200 DEBUG Forklift autodiagnostic: Dropping test after lifting...
+2023-04-20T15:25:32.596309+0200 INFO Forklift autodiagnostic: Dropping test passed!
+2023-04-20T15:25:33.262972+0200 INFO Forklift autodiagnostic: Passed lifting test
+2023-04-20T15:25:35.263005+0200 INFO Forklift autodiagnostic: Starting forward/backward/stopping test..
+2023-04-20T15:25:35.929748+0200 INFO Forklift autodiagnostic: Forward move OK!
+2023-04-20T15:25:36.596293+0200 INFO Forklift autodiagnostic: Stopping test started..
+2023-04-20T15:25:37.262986+0200 INFO Forklift autodiagnostic: Stopping completed succesfully!
+2023-04-20T15:25:38.596451+0200 INFO Forklift autodiagnostic: Backward move test started..
+2023-04-20T15:25:39.263123+0200 INFO Forklift autodiagnostic: Backward move finished with error!
+2023-04-20T15:25:39.929688+0200 INFO Forklift autodiagnostic: Stopping completed succesfully!
+2023-04-20T15:25:40.596415+0200 INFO Forklift autodiagnostic: Passed forward/backward/stopping test
+2023-04-20T15:25:41.262985+0200 INFO Forklift autodiagnostic: Test finished
+2023-04-20T15:28:54.262992+0200 INFO =============NEW STARTUP==============
+2023-04-20T15:28:56.263026+0200 INFO Forklift autodiagnostic: Ping test passed, communication OK
+2023-04-20T15:28:57.596315+0200 WARNING Forklift autodiagnostic: Checking safety! Please leave safety zones and unpress E-stops buttons!
+2023-04-20T15:28:58.263147+0200 INFO Forklift autodiagnostic: Test finished
+2023-04-20T15:29:41.924102+0200 INFO =============NEW STARTUP==============
+2023-04-20T15:29:43.924069+0200 INFO Forklift autodiagnostic: Ping test passed, communication OK
+2023-04-20T15:29:44.590777+0200 INFO Forklift autodiagnostic: Starting steering test..
+2023-04-20T15:29:45.257416+0200 INFO Testing first angle...
+2023-04-20T15:29:49.257417+0200 INFO Done second test!
+2023-04-20T15:29:49.924203+0200 INFO Testing third angle...
+2023-04-20T15:29:51.924097+0200 INFO Forklift autodiagnostic: Servo test passed. Steering OK
+2023-04-20T15:29:52.590814+0200 DEBUG Forklift autodiagnostic: Starting lifting test...
+2023-04-20T15:30:03.257451+0200 DEBUG Forklift autodiagnostic: Dropping test after lifting...
+2023-04-20T15:30:13.924199+0200 INFO Forklift autodiagnostic: Passed lifting test
+2023-04-20T15:30:15.924189+0200 INFO Forklift autodiagnostic: Starting forward/backward/stopping test..
+2023-04-20T15:30:16.590857+0200 INFO Forklift autodiagnostic: Forward move test started..
+2023-04-20T15:30:22.590800+0200 CRITICAL Forklift autodiagnostic: Forward move finished with error!
+2023-04-20T15:30:23.257401+0200 INFO Forklift autodiagnostic: Stopping completed succesfully!
+2023-04-20T15:30:24.590808+0200 INFO Forklift autodiagnostic: Backward move test started..
+2023-04-20T15:30:30.590827+0200 INFO Forklift autodiagnostic: Stopping completed succesfully!
+2023-04-20T15:30:31.257531+0200 INFO Forklift autodiagnostic: Test finished
+2023-04-20T15:52:58.258536+0200 INFO =============NEW STARTUP==============
+2023-04-20T15:53:00.257766+0200 INFO Forklift autodiagnostic: Started: Waiting for ping test result...
+2023-04-20T15:53:06.257529+0200 INFO Forklift autodiagnostic: Ping test passed!
+2023-04-20T15:53:07.590930+0200 INFO Forklift autodiagnostic: Ping test passed, communication OK
+2023-04-20T15:53:08.257523+0200 INFO Forklift autodiagnostic: Starting steering test..
+2023-04-20T15:53:08.929388+0200 INFO Testing first angle...
+2023-04-20T15:53:12.924235+0200 INFO Testing third angle...
+2023-04-20T15:53:14.924238+0200 INFO Angles_OK!
+2023-04-20T15:53:15.590891+0200 INFO Forklift autodiagnostic: Lifting module test started...
+2023-04-20T15:53:16.257716+0200 DEBUG Forklift autodiagnostic: Starting lifting test...
+2023-04-20T15:53:26.257572+0200 INFO Forklift autodiagnostic: Lifting test passed!
+2023-04-20T15:53:26.924213+0200 DEBUG Forklift autodiagnostic: Dropping test after lifting...
+2023-04-20T15:53:36.924289+0200 INFO Forklift autodiagnostic: Dropping test passed!
+2023-04-20T15:53:37.590952+0200 INFO Forklift autodiagnostic: Passed lifting test
+2023-04-20T15:53:39.591183+0200 INFO Forklift autodiagnostic: Starting forward/backward/stopping test..
+2023-04-20T15:53:40.257582+0200 INFO Forklift autodiagnostic: Forward move test started..
+2023-04-20T15:53:40.924419+0200 INFO Forklift autodiagnostic: Stopping test started..
+2023-04-20T15:53:41.590946+0200 INFO Forklift autodiagnostic: Stopping completed succesfully!
+2023-04-20T15:53:42.924336+0200 INFO Forklift autodiagnostic: Backward move test started..
+2023-04-20T15:53:43.591125+0200 INFO Forklift autodiagnostic: Stopping test 2 started..
+2023-04-20T15:53:44.259408+0200 INFO Forklift autodiagnostic: Passed forward/backward/stopping test
+2023-04-20T15:53:44.924291+0200 INFO Forklift autodiagnostic: Test finished
+2023-05-12T15:46:47.913001+0200 CRITICAL PLC Communication: Error in reading PLC Datatable.
+2023-05-12T15:48:42.913145+0200 CRITICAL PLC Communication: Error in writing PLC Datatable.
+2023-05-12T15:49:44.579924+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-12T15:50:14.579800+0200 CRITICAL PLC Communication: Error in reading PLC Datatable.
+2023-05-15T11:12:46.329866+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:12:46.996490+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:12:48.329784+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:12:48.996482+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:12:50.329800+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:12:50.996445+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:12:52.329840+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:12:52.996497+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:12:54.329794+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:12:54.996522+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:12:56.329759+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:12:56.996464+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:12:58.329774+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:12:58.996483+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:13:00.329758+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:13:00.996489+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:13:02.329997+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:13:02.996495+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:13:04.329782+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:13:04.996549+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:13:06.329787+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:13:06.996443+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:13:08.329751+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:13:08.996449+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:13:10.329780+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:13:10.996451+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:13:12.329752+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:13:12.996445+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:16:52.294234+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:17:36.899998+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:17:44.900003+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:17:45.566666+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:17:46.233051+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:17:47.566580+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:17:48.233025+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:17:49.566589+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:17:50.233023+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:17:51.566600+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:17:52.233005+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:17:53.566582+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:17:54.233042+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:17:55.566609+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:17:56.233043+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:17:57.566627+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:17:58.233043+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:17:59.566562+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:18:00.233013+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:18:01.566540+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:18:02.233018+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:18:03.566602+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:18:04.232953+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:18:05.566618+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:18:06.233002+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:18:07.566585+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:18:08.233051+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:18:09.566608+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:18:10.233015+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:18:11.566589+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:18:12.232994+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:18:13.566587+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:18:14.233081+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:18:15.566653+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:18:16.233265+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:18:17.566665+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:18:18.233067+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:18:19.566598+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:18:20.233120+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:18:21.566623+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:18:22.232996+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:18:23.566659+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:18:24.233017+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:18:25.566685+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:18:26.233036+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:18:27.566653+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:18:28.233050+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:18:29.566654+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:18:30.233053+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:18:31.566635+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:18:32.233064+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:18:33.566588+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:18:34.232997+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:18:35.566590+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:18:36.233033+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:18:37.566682+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:18:38.232997+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:18:39.566637+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:18:40.233056+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:18:41.566672+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:18:42.233049+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:18:43.566689+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:18:44.232999+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:18:45.566613+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:18:46.233028+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:18:47.566612+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:18:48.233027+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:18:49.566661+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:18:50.233297+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:18:51.566552+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:18:52.233037+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:18:53.566600+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:18:54.233272+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:18:55.566624+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:18:56.233278+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:18:57.566596+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:18:58.233027+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:18:59.566641+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:19:00.233068+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:19:01.566676+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:19:02.233295+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:19:03.566620+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:19:04.233080+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:19:05.566724+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:19:06.233338+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:19:07.566670+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:19:08.233040+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:19:09.566676+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:19:10.233321+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:19:11.566616+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:19:12.233040+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:19:13.566588+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:19:14.233058+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:19:15.566599+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:19:16.233035+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:19:17.566634+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:19:18.233016+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:19:19.566600+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:19:20.232991+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:19:21.566574+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:19:22.233035+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:19:23.566611+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:19:24.233019+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:19:51.609719+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:19:52.943076+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:19:53.609698+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:19:54.943061+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:19:55.609664+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:19:56.943062+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:19:57.609746+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:19:58.943063+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:19:59.609670+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:20:00.943094+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:20:01.609669+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:20:02.943002+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:20:03.609696+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:20:04.943015+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:20:05.609699+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:20:06.943034+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:20:07.609669+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:20:08.943009+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:20:09.609669+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:20:10.943002+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:20:11.609697+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:20:12.943074+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:20:13.609755+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:20:14.943197+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:20:15.609872+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:20:16.942914+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:20:17.609745+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:20:18.942985+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:20:19.609679+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:20:20.943091+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:20:21.609715+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:20:22.943106+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:20:23.609731+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:20:24.943089+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:20:25.609716+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:20:26.943144+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:20:27.609677+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:20:28.943012+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:20:29.609684+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:20:30.943049+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:20:31.609670+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:20:32.943031+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:20:33.609707+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:20:34.943019+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:20:35.609697+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:20:36.942852+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:20:37.609692+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:20:38.943166+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:20:39.609672+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:20:40.943019+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:20:41.609701+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:20:42.943054+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:20:43.609669+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:20:44.943095+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:21:22.493959+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:21:23.160539+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:21:23.827219+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:21:24.494012+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:21:25.827212+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:21:26.493850+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:21:27.827184+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:21:28.493864+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:21:29.827187+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:21:30.493854+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:21:31.827174+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:21:32.493920+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:21:33.827179+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:21:34.493866+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:21:35.827244+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:21:36.493903+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:21:37.827214+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:21:38.493918+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:21:39.827199+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:21:40.493925+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:21:41.827222+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:21:42.494037+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:21:43.827180+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:21:44.493991+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:21:45.827209+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:21:46.493884+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:21:47.827189+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:21:48.493845+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:21:49.827184+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:21:50.493873+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:21:51.827200+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:21:52.493905+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:21:53.827181+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:21:54.493871+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:21:55.827203+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:21:56.493893+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:21:57.827183+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:21:58.493922+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:21:59.827187+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:22:00.493898+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:22:01.827206+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:22:02.493950+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:22:03.827174+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:22:04.493844+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:22:05.827288+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:22:06.493956+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:22:07.827203+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:22:08.493910+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:22:09.827182+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:22:10.493923+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:22:11.827186+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:22:12.493918+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:22:13.827217+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:22:14.493843+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:22:15.827205+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:22:16.493927+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:22:17.827310+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:22:18.493962+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:22:22.410506+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:22:23.077135+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:22:24.410486+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:22:25.077009+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:22:26.410447+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:22:27.077076+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:23:10.365203+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:23:34.617136+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:23:40.616940+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:23:41.283783+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:23:42.617110+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:23:43.283853+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:23:44.617110+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:23:45.283808+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:23:46.617131+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:23:47.283868+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:23:48.617143+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:23:49.283796+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:24:37.006155+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:24:38.339477+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:24:39.006225+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:24:40.339452+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:24:41.006229+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:24:42.339447+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:24:43.006126+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:24:44.339450+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:24:45.006159+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:25:00.796990+0200 ERROR Encoder read error: encoder direction
+2023-05-15T11:56:13.161391+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T11:59:23.810934+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T12:07:34.259172+0200 CRITICAL PLC Communication: Error in writing PLC Datatable.
+2023-05-15T12:18:22.386971+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T12:18:36.401976+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-15T12:53:57.030454+0200 CRITICAL PLC Communication: Error in writing IO to PLC.
+2023-05-16T11:06:52.727732+0200 ERROR Encoder read error: encoder direction

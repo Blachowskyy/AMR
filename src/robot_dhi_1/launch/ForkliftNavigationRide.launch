@@ -1,0 +1,41 @@
+<launch>
+  <!-- Odpalenie paczki komunikacyjnej SICK LidarLoc -->
+  <include file="$(find sick_lidar_localization)/launch/sick_lidar_localization.launch" />
+  <!-- Wlaczenie konwersji TF -->
+  <include file="$(find robot_dhi_1)/tf/tf_test.launch" />  
+  <!-- Konwerter wartosci jazdy do wyslania do PLC -->
+  <node pkg="robot_dhi_1" type="DriveController.py" name="DriveControler" />
+  <!-- Konwerter danych z nawigacji do danych DriveControlera -->
+  <node pkg="robot_dhi_1" type="base_controler" name="base_controler" />
+  <!-- Program obliczajacy odometrie -->
+  <node pkg="robot_dhi_1" type="odom_pub" name="odom_pub"/>
+  <!-- Wlaczenie programu rviz wraz z domyslna konfiguracja -->
+  <node pkg="rviz" type="rviz" name="rviz" respawn="false" args="-d $(find robot_dhi_1)/param_old/biuro.rviz">
+  </node>  
+  <!-- Paczka konwertujaca punkt klikniety na mapie jako cel -->
+  <node pkg="robot_dhi_1" type="rviz_click_to_2d" name="rviz_click_to_2d">
+  </node>  
+  <!-- Paczki komunikacyjne ze skanerami SICK Microscan3 -->
+  <include file="$(find sick_safetyscanners)/launch/sensor_1.launch"/>
+  <include file="$(find sick_safetyscanners)/launch/sensor_2.launch"/>
+  <!-- Paczka laczaca skany z dwoch lidarow w jeden -->
+  <include file="$(find ira_laser_tools)/launch/laserscan_multi_merger.launch"/>
+  <!-- Wlaczenie serwera mapy i wczytanie mapy -->
+  <node pkg="map_server" name="map_server" type="map_server" args="$(find robot_dhi_1)/maps/hala5cmedit.yaml"/>
+  <!-- Parametryzacja i odpalenie modulu nawigacyjnego wraz z TEB Local Planner -->
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <rosparam file="$(find robot_dhi_1)/param/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find robot_dhi_1)/param/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find robot_dhi_1)/param/local_costmap_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find robot_dhi_1)/param/global_costmap_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find robot_dhi_1)/param/teb_local_planner_params.yaml" command="load" />
+    <rosparam file="$(find robot_dhi_1)/param/move_base_params.yaml" command="load" />
+		<param name="base_global_planner" value="global_planner/GlobalPlanner" />
+		<param name="planner_frequency" value="0.50" />
+		<param name="planner_patience" value="5.0" />
+		<param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" />
+		<param name="controller_frequency" value="2.0" />
+		<param name="controller_patience" value="5.0" />
+    <param name="clearing_rotation_allowed" value="false" /> 
+  </node>  
+</launch>

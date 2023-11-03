@@ -1,0 +1,106 @@
+<launch>
+<!-- Transformation Configuration ... Setting Up the Relationships Between Coordinate Frames --> 
+
+  <node pkg="tf" type="static_transform_publisher" name="base_link_to_laser" args="0.06 0 0.08 0 0 0 base_link scan 30" />
+  <node pkg="tf" type="static_transform_publisher" name="base_footprint_to_base_link" args="0 0 0.09 0 0 0 base_footprint base_link 30" />
+  <!-- odom to base_footprint will be provided by the odom_pub -->
+  <!-- <node pkg="tf" type="static_transform_publisher" name="odom_to_base_footprint" args="0 0 0 0 0 0 odom base_footprint 30" /> -->
+  <!-- map to odom will be provided by the AMCL -->
+  <node pkg="tf" type="static_transform_publisher" name="map_to_odom" args="0 0 0 0 0 0 map odom 30" />
+  
+  
+ <!-- Data transmision between ROS and PLC - (Curtis - Servo) -->  
+  <!-- Subscribe: /comand_curtis_vel, /comand_servo_angle -->
+  <!-- Publish: /wozek_angle_tick, servo_angle_tick-->
+  <node pkg="robot_dhi_1" type="wozek.py" name="wozek" output="screen"/>
+  
+  
+  <!-- Wheel Odometry Publisher -->
+  <!-- Subscribe: /enkoder_tic, /servo_angle, /initial_2d -->
+  <!-- Publish: /odom_data_euler, /odom_data_quat -->
+  <!-- odom to base_footprint transform publisher -->
+  <node pkg="robot_dhi_1" type="odom_pub" name="odom_pub">
+  </node> 
+  
+ 
+    
+  <!-- Initial Pose and Goal Publisher -->
+  <!-- Publish: /initialpose, /move_base_simple/goal -->
+  <node pkg="rviz" type="rviz" name="rviz" args="-d /home/catkin_ws/src/robot_dhi_1/param/biuro.rviz">
+  </node> 
+
+  <!-- Subscribe: /initialpose, /move_base_simple/goal -->
+  <!-- Publish: /initial_2d, /goal_2d --> 
+  <node pkg="robot_dhi_1" type="rviz_click_to_2d" name="rviz_click_to_2d">
+  </node>  
+  
+  
+  
+ <!-- Lidar Data Publisher Using sick_safetyscanners -->
+  <!-- Used for obstacle avoidance and can be used for mapping --> 
+  <!-- Publish: /scan -->
+  
+  <arg name="sensor_ip"             default="192.168.1.30" />
+  <arg name="host_ip"               default="192.168.1.7" />
+  <arg name="interface_ip"          default="0.0.0.0" />
+  <arg name="host_udp_port"         default="0" />
+  <arg name="frame_id"              default="scan" />
+  <arg name="skip"                  default="0" />
+  <arg name="angle_start"           default="0" />
+  <arg name="angle_end"             default="0" />
+  <arg name="time_offset"           default="0.0" />
+  <arg name="min_intensities"       default="0.0" doc="minimal intensity for a laserscan point" />
+  <arg name="channel"               default="0" />
+  <arg name="channel_enabled"       default="True" />
+  <arg name="general_system_state"  default="True" />
+  <arg name="derived_settings"      default="True" />
+  <arg name="measurement_data"      default="True" />
+  <arg name="intrusion_data"        default="True" />
+  <arg name="application_io_data"   default="True" />
+  <arg name="use_persistent_config"   default="False" />
+
+  <!-- Launch Sick SickSafetyscanners Ros Driver Node -->
+  <node pkg="sick_safetyscanners" type="sick_safetyscanners_node" name="sick_safetyscanners" output="screen" ns="sick_safetyscanners">
+     <param name="sensor_ip"              type="string" value="$(arg sensor_ip)" />
+     <param name="host_ip"                type="string" value="$(arg host_ip)" />
+     <param name="interface_ip"           type="string" value="$(arg interface_ip)" />
+     <param name="host_udp_port"          type="int"    value="$(arg host_udp_port)" />
+     <param name="frame_id"               type="string" value="$(arg frame_id)" />
+     <param name="skip"                   type="int"    value="$(arg skip)" />
+     <param name="angle_start"            type="double" value="$(arg angle_start)" />
+     <param name="angle_end"              type="double" value="$(arg angle_end)" />
+     <param name="time_offset"            type="double" value="$(arg time_offset)" />
+     <param name="min_intensities"        type="double" value="$(arg min_intensities)" />
+     <param name="channel"                type="int"    value="$(arg channel)" />
+     <param name="channel_enabled"        type="bool"   value="$(arg channel_enabled)" />
+     <param name="general_system_state"   type="bool"   value="$(arg general_system_state)" />
+     <param name="derived_settings"       type="bool"   value="$(arg derived_settings)" />
+     <param name="measurement_data"       type="bool"   value="$(arg measurement_data)" />
+     <param name="intrusion_data"         type="bool"   value="$(arg intrusion_data)" />
+     <param name="application_io_data"    type="bool"   value="$(arg application_io_data)" />
+     <param name="use_persistent_config"  type="bool"   value="$(arg use_persistent_config)" />
+  </node>
+
+<!-- Map Server -->
+  <!-- Publish: /map, /map_metadata -->
+  <node pkg="map_server" name="map_server" type="map_server" args="$(find robot_dhi_1)/param/biuro.yaml"/>
+  <!-- <arg name="map_file" default="$(find navigation_data_pub)/maps/floorplan4.yaml"/> -->
+  
+<!-- Add AMCL example for differential drive robots for Localization -->
+  <!-- Subscribe: /scan, /tf, /initialpose, /map -->
+  <!-- Publish: /amcl_pose, /particlecloud, /tf -->
+  <include file="$(find amcl)/examples/amcl_diff.launch"/>
+	
+  <!-- Move Base Node -->
+  <!-- Subscribe: /move_base_simple/goal -->
+  <!-- Publish: /cmd_vel -->
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <rosparam file="$(find robot_dhi_1)/param/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find robot_dhi_1)/param/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find robot_dhi_1)/param/local_costmap_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find robot_dhi_1)/param/global_costmap_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find robot_dhi_1)/param/base_local_planner_params.yaml" command="load" />
+  </node>
+
+  
+  </launch>

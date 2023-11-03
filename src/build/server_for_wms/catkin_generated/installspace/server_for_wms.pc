@@ -1,0 +1,8 @@
+prefix=/usr/local
+
+Name: server_for_wms
+Description: Description of server_for_wms
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

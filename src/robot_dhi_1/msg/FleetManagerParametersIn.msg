@@ -1,0 +1,2 @@
+bool RememberTasksAtStartup
+bool IsConnectionActive

@@ -1,0 +1,8 @@
+prefix=/home/ros/catkin_ws/src/build/devel
+
+Name: tf2_py
+Description: Description of tf2_py
+Version: 0.7.5
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: rospy tf2

@@ -1,0 +1,9 @@
+<launch>
+
+	<include file="$(find hector_mapping)/launch/mapping_default.launch" />
+	
+	 <node name="costmap_node" pkg="costmap_2d" type="costmap_2d_node" >
+	 <rosparam file="$(find costmap_2d)my_test/costmap_common_params.yaml" command="load" ns="local_costmap" />
+	 <rosparam file="$(find costmap_2d)my_test/local_costmap_params.yaml" command="load" />
+	 </node>
+</launch>

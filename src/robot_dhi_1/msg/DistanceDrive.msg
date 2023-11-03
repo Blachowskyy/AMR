@@ -1,0 +1,8 @@
+bool EnableDistanceDrive
+bool ResetDistanceDrive
+bool CancelDistanceDrive
+bool BasePositionSaved
+bool PositionReached
+int32 MessageId
+float32 RequestedDistance
+

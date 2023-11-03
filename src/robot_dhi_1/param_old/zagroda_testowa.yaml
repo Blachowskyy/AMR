@@ -1,0 +1,6 @@
+image: zagroda_testowa.png
+resolution: 0.1
+origin: [-6.35, -5.35, 0.0]
+negate: 0
+occupied_thresh: 0.55
+free_thresh: 0.45

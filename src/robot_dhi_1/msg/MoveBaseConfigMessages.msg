@@ -1,0 +1,9 @@
+float32 GlobalPlannerFrequency
+float32 GlobalPlannerPatience
+float32 LocalPlannnerFrequency
+float32 LocalPlannerPatience
+float32 MaxPlanningRetries
+float32 OscillationTimeout
+float32 OscillationDistance
+bool RecoveryBehaviour
+bool MakePlanClearCostmap

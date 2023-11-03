@@ -1,0 +1,7 @@
+bool ConfirmNewTaskReceived
+bool ConfirmContinueWork
+bool ConfirmPauseWork
+bool ConfirmEmergencyStop
+bool ConfirmCancelLastTask
+bool ConfirmStartTask
+

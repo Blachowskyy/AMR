@@ -1,0 +1,6 @@
+<launch>
+
+<node pkg="sick_safetyscanners" type="sick_safetyscanners.launch" name="sick_safetyscanners" output="screen" ns="sick_safetyscanners" />
+<node pkg="sick_safetyscanners" type="sick_safetyscanners2.launch" name="sick_safetyscanners2" output="screen" ns="sick_safetyscanners2" />
+
+</launch>

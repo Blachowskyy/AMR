@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/ros/catkin_ws/src/robot_dhi_1/build/devel/setup.sh

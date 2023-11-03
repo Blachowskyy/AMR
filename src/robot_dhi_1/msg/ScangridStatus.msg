@@ -1,0 +1,11 @@
+bool SafetyOutput
+bool ProtectFieldStatus
+bool WorkStatus
+bool WarningFieldStatus
+bool ContaminationWarning
+bool ContaminationError
+bool MonitoringCaseSwitchInputStatus
+bool MonitoringCaseSwitchCANInputStatus
+bool VoltageError
+bool ResistanceToExternalLightError
+bool SleepModeStatus

@@ -1,0 +1,328 @@
+/*
+ * Subscribe: This node will subscribe to the following topics:
+ * /servo_angle_tick: Angle of direction wheel (std_msgs/Int64)
+ * 
+ *  /wozek_angle_tick : Tick counts from the  motor encoder  (std_msgs/Int64)
+ * 
+ *  /cmd_vel
+ *
+ *  /initial_2d : The initial position and orientation of the robot.
+ *               (geometry_msgs/PoseStamped)
+ *
+ * Publish: This node will publish to the following topics:
+ *  odom_data_euler : Position and velocity estimate. The orientation.z 
+ *                    variable is an Euler angle representing the yaw angle.
+ *                    (nav_msgs/Odometry)
+ *  odom_data_quat : Position and velocity estimate. The orientation is 
+ *                   in quaternion format.
+ *                   (nav_msgs/Odometry)
+ */
+ 
+// Include various libraries
+#include "ros/ros.h"
+#include <string>
+#include "std_msgs/Int64.h"
+#include "std_msgs/Float32.h"
+#include <nav_msgs/Odometry.h>
+#include <geometry_msgs/PoseStamped.h>
+#include <geometry_msgs/TransformStamped.h>
+//#include <tf2/LinearMath/Quaternion.h>
+#include <tf/transform_broadcaster.h>
+#include <cmath>
+#include "sick_lidar_localization/LocalizationControllerResultMessage0502.h"
+ 
+// Create odometry data publishers
+//ros::Publisher odom_data_pub;
+//ros::Publisher odom_data_pub_quat;
+
+ros::Publisher comand_curtis_vel_pub;
+ros::Publisher comand_servo_angle_pub;
+ros::Publisher servo_vel_pub;
+ros::Publisher servo_vel_kola_pub;
+ros::Publisher servo_Psi_kola_pub;
+
+// nav_msgs::Odometry odomNew;
+// nav_msgs::Odometry odomOld;
+// nav_msgs::Odometry sickOdom;
+nav_msgs::Odometry Odom;
+std_msgs::Int64 PWM_DutyCycle;
+std_msgs::Float32 ServoTick;
+std_msgs::Float32 V_wozka;
+std_msgs::Float32 V_kola;
+std_msgs::Float32 Psi_kola;
+
+tf::TransformBroadcaster *tb;
+ 
+// Initial pose
+//const double initialX = 0.0;
+//const double initialY = 0.0;
+//const double initialPsi = 0.0;
+const double PI = 3.141592;
+ 
+// Robot physical constants
+const double TICKS_PER_REVOLUTION = 3215;// For reference purposes.
+const double WHEEL_RADIUS = 0.105; 	// Wheel radius in meters
+const double BASE = 1.195; 		// Center of turning to direction tire
+const double TICKS_PER_METER = 4800; //TICKS_PER_REVOLUTION / (2 * PI * WHEEL_RADIUS);
+
+// Servo physical constants
+const double ZERO_SERVO = 0.0;
+const double RADIN_MIN = (-42 * PI)/180.0;
+const double RADIN_MAX = (42 * PI)/180.0;
+const double TICK_MIN = -6 * 7 * 10000 + ZERO_SERVO;
+const double TICK_MAX = 6 * 7 * 10000 + ZERO_SERVO;
+const double RADIAN_PER_TICKS = ((RADIN_MAX - RADIN_MIN) / ( TICK_MAX - TICK_MIN)); //(10000 * 180)/(7 * PI); 
+  
+// distance_Rob both wheels have traveled
+double DeltaDistanceKolo = 0.0;
+double DeltaDistanceKolo_1 = 0.0;
+//double twistServo = 0.0;
+double Psi = 0.0;
+double V = 0;
+float Vw = 0;
+double Fi = 0;
+double Fi_dot = 0;
+long int KoloLastCount = 0;
+//long int ServoLastCount = 0;
+double controlWozekPWM  = 0;
+double controlKoloAngle  = 0;
+double V_zad = 0;
+double X_dot1 = 0;
+double Y_dot1 = 0;
+double Fi_dot_zad = 0;
+double Fi_dot1 = 0;
+double TimeOld = 0;
+double DeltaTime = 0;
+int Move = 0;
+int iii = 0;
+double tt = 0;
+double Dist_mm = 0;
+
+ 
+// Flag to see if initial pose has been received
+//bool initialPoseRecieved = false;
+ 
+using namespace std;
+  
+// Calculate the distance_Rob the wheel has traveled since the last cycle
+void DistanceCalc(const std_msgs::Int64& Count) {
+              
+    if(Move==0) {
+      KoloLastCount = Count.data;
+      Move=1;}
+    else {
+      Dist_mm = (Count.data - KoloLastCount);
+      if (abs(Dist_mm )> 650) {
+         Dist_mm  = DeltaDistanceKolo * 10000.0;
+       }
+    DeltaDistanceKolo_1 = (double)Dist_mm /10000.0;
+
+     //Data filtration
+    float alfa = 0.80;
+    DeltaDistanceKolo = alfa * DeltaDistanceKolo + (1 - alfa) * DeltaDistanceKolo_1;
+     
+    
+
+    ROS_INFO_STREAM("DistanceCalc Ticks Count.data = "<<Count.data<<"  DeltaDistanceKolo  = "<<DeltaDistanceKolo);
+    KoloLastCount = Count.data;}
+}
+
+/* void AngleCalc(const std_msgs::Int64& Count) {
+
+  //long int angleTics = Count.data - ServoLastCount;
+  //twistSerwo = double(TICKS_PER_RADIAN * angleTics);
+  //Psi = ( (double)Count.data/TICKS_PER_RADIAN);
+  Psi = (RADIAN_PER_TICKS * ((double)Count.data - ZERO_SERVO));
+  ROS_INFO_STREAM("AngleCalc Psi Count.data = "<<Count.data<<" Psi = "<<Psi);
+  //ServoLastCount = Count.data;
+} */
+
+ void OdomData(const nav_msgs::Odometry OdomGet)  {
+   //ROS_INFO("OdomData");
+   X_dot1 = (double)OdomGet.twist.twist.linear.x;
+   Y_dot1 = (double)OdomGet.twist.twist.linear.y;
+   Fi_dot1 = (double)OdomGet.twist.twist.angular.z;
+   //V = sqrt( pow(X_dot1, 2) + pow(Y_dot1, 2) );
+   //double PSI1 = (double)Odom.pose.pose.orientation.z;
+   //Odom = OdomGet;
+ ROS_INFO_STREAM("Odom X_dot ="<<X_dot1<<" Y_dot="<<Y_dot1<<" V ="<<V<<" Fi_dot="<<Fi_dot);
+ }
+
+ void VelDest(const geometry_msgs::Twist& cmdVel) {
+   V_zad = (double)cmdVel.linear.x;
+   Fi_dot_zad = (double)cmdVel.angular.z;
+   Fi_dot = Fi_dot1;
+   V = sqrt( pow(X_dot1, 2) + pow(Y_dot1, 2));
+   ROS_INFO_STREAM("VelDest V_zad ="<<V_zad<<" Fi_dot_zad="<<Fi_dot_zad);
+ }
+
+// Take the velocity command as input and calculate the PWM values.
+void BaseControler()  {         //const geometry_msgs::Twist& cmdVel) {
+          
+  //  double alfa = 0.85;
+   
+   ROS_INFO("BaseControler");
+   // Data filtration
+  //  V = alfa * V + (1 - alfa) * (double)Odom.twist.twist.linear.x;
+  //  Fi_dot = alfa * Fi_dot + (1 - alfa) * (double)Odom.twist.twist.angular.z;
+    
+   // Calculate the PWM value given the desired velocity 
+   //tt = tt + DeltaTime;
+  
+   double Delta_V = (V_zad - V);
+   
+   double test = 0;
+   if (Delta_V <= 0.01){
+    Delta_V = Delta_V * 30;
+   }
+   else {
+    Delta_V = Delta_V;
+   }
+   controlWozekPWM = controlWozekPWM + ((100.0 ) * Delta_V);
+  //  controlWozekPWM = 1000;
+
+   if ((controlWozekPWM < 3700) && (controlWozekPWM > -3700)){
+    controlWozekPWM = controlWozekPWM;
+    //controlWozekPWM = controlWozekPWM + ((300.0 ) * Delta_V);
+    //controlWozekPWM = 3000*sin(2*PI*0.1*0.1*tt);
+     }   
+  else{
+   if (controlWozekPWM>=3700){
+        controlWozekPWM=3699;
+        }
+      else if (controlWozekPWM<=-3700){
+        controlWozekPWM= -3699;
+        }
+  }
+   ROS_INFO_STREAM("V_zad ="<<V_zad<<" V="<<V<<" Delta_V="<<Delta_V<<" controlWozekPWM ="<<controlWozekPWM);
+ 
+     // Calculate the Servo position value given the desired angle 
+  double Delta_Fi_dot = (Fi_dot_zad - Fi_dot);
+  // controlKoloAngle = -70;
+  controlKoloAngle = controlKoloAngle+ (5 * Delta_Fi_dot);
+  // controlKoloAngle = (controlKoloAngle  + 0.2 * (180.0 / PI) * Delta_Fi_dot);
+  if ((controlKoloAngle <= 70) && (controlKoloAngle >= -70))  {
+    //controlKoloAngle = (controlKoloAngle  + 0.3 * (180.0 / PI) * Delta_Fi_dot);
+    controlKoloAngle = controlKoloAngle;
+    //  if (controlKoloAngle > 70)  {  
+    //   controlKoloAngle = 70;
+    //   }
+    // else  if (controlKoloAngle < -70)  {  
+    //   controlKoloAngle = -70;
+    //   }
+  }
+  else  {
+    if (controlKoloAngle > 70)  {  
+      controlKoloAngle = 70;
+      }
+    else  if (controlKoloAngle < -70)  {  
+      controlKoloAngle = -70;
+      }
+  }
+  
+  ROS_INFO_STREAM("Fi_dot_zad ="<<Fi_dot_zad<<" Fi_dot="<<Fi_dot<<" Delta_Fi_dot="<<Delta_Fi_dot<<" controlKoloAngle ="<<controlKoloAngle);
+   
+}
+
+// // Update odometry information
+void UpdateOdom() {
+
+  ROS_INFO("update_wozek_odom");
+  
+  double TimeNow = ros::Time::now().toSec();
+  if (iii==0) {
+    TimeOld = TimeNow;
+    iii = 1;
+  }
+  else {
+  
+  // Calculate the time step
+  DeltaTime = TimeNow - TimeOld;
+
+  //double Psi = Odom.pose.pose.orientation.z;
+
+  // Calculate the wheel velocity in meters per secound 
+  //Data filtration
+    float alfa = 0.85;
+    double DeltaDist = - DeltaDistanceKolo/DeltaTime;
+    Vw = alfa * Vw + (1 - alfa) * DeltaDist;
+     
+
+  Psi = (controlKoloAngle * PI)/ 180.0;
+  
+  
+  // Calculate the wozek velocity in meters per secound 
+  //V = Vw * cos(Psi);
+  // Calculate the twist velocity radians per secound
+  //Fi_dot = Vw * (sin(Psi)/BASE);
+  
+  
+  ROS_INFO_STREAM("DeltaTime = "<<DeltaTime);
+
+  ROS_INFO_STREAM("Psi = "<<Psi<<" Vw= "<<Vw);      //<<" V= "<<V<<" Fi_dot =" <<Fi_dot);
+
+
+  // Calculate the position 
+   // Calculate the velocity 
+  //Fi += Fi_dot * DeltaTime;
+  /* double X_dot = V * cos(Fi);
+  double Y_dot = V * sin(Fi);
+  double X += X_dot * DeltaTime;
+  double Y += Y_dot * DeltaTime; */
+  TimeOld = TimeNow; }
+
+}
+
+
+int main(int argc, char **argv) {
+ 
+ // Launch ROS and create a node
+  ros::init(argc, argv, "odom_pub");
+  ros::NodeHandle node;  
+
+  // Subscribe to ROS topics
+  ros::Subscriber subForTickCounts = node.subscribe("wozek_angle_tick", 30, DistanceCalc,  ros::TransportHints().tcpNoDelay());
+  //ros::Subscriber subForAngeCounts = node.subscribe("servo_angle_tick", 30, AngleCalc, ros::TransportHints().tcpNoDelay());
+  ros::Subscriber subCmdVel = node.subscribe("cmd_vel", 30, VelDest, ros::TransportHints().tcpNoDelay());
+  ros::Subscriber subOdom = node.subscribe("odom", 30, OdomData, ros::TransportHints().tcpNoDelay());
+   
+  //odom_data_pub = node.advertise<nav_msgs::Odometry>("odom", 30);
+  comand_curtis_vel_pub = node.advertise<std_msgs::Int64>("comand_curtis_vel", 10);
+  comand_servo_angle_pub = node.advertise<std_msgs::Float32>("comand_servo_angle", 10);
+  servo_vel_pub = node.advertise<std_msgs::Float32>("servo_vel", 10);
+  servo_vel_kola_pub = node.advertise<std_msgs::Float32>("servo_vel_kola", 10);
+  servo_Psi_kola_pub = node.advertise<std_msgs::Float32>("servo_Psi_kola", 10);
+
+
+
+  //ros::Time::init();
+  ros::Rate loop_rate(100); 
+     
+  while(ros::ok()) {
+      
+   // if(initialPoseRecieved) {
+    ROS_INFO("LOOP CONTROLER");
+      //update_odom();
+      //publish_quat();
+      //update_trans();
+      UpdateOdom();
+      BaseControler();
+      PWM_DutyCycle.data = controlWozekPWM;
+      comand_curtis_vel_pub.publish((std_msgs::Int64)PWM_DutyCycle);
+      ServoTick.data  = controlKoloAngle;
+      comand_servo_angle_pub.publish((std_msgs::Float32)ServoTick);
+      V_wozka.data = V;
+      servo_vel_pub.publish((std_msgs::Float32)V_wozka);      
+      V_kola.data = Vw;
+      servo_vel_kola_pub.publish((std_msgs::Float32)V_kola); 
+      Psi_kola.data = Psi;
+      servo_Psi_kola_pub.publish((std_msgs::Float32)Psi_kola); 
+
+   // }
+    ros::spinOnce();
+    loop_rate.sleep();
+  }
+ 
+  return 0;
+}
+

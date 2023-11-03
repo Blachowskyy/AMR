@@ -1,0 +1,30 @@
+string DataRefreshTime
+int64 CurrentTiltAngleAxis1
+int64 CurrentTiltAngleAxis2
+int64 CurrentPWM
+int64 CurrentCargoWeight
+int64 CurrentForksHeight
+float32 CurrentPositionX
+float32 CurrentPositionY
+float32 CurrentPositionTheta
+float32 CurrentBatteryVoltage
+float32 CurrentBatteryPercentage
+float32 CurrentSteeringAngle
+float32 CurrentVehicleSpeed
+bool BatteryStateCritical
+bool S0_1
+bool S0_2
+bool S0_3
+bool S1
+bool S2
+bool S3
+bool S4
+bool S4_0
+bool S4_1
+bool S4_2
+bool S4_3
+bool S4_4
+bool S4_5
+bool S4_6
+
+

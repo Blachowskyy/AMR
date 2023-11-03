@@ -1,0 +1,769 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="model_wozek">
+  <link name="base_link" />
+    <inertial>
+      <origin
+        xyz="0.0 -0.443606940926552 0.02"
+        rpy="0 0 0" />
+    </inertial>
+  <joint name="base_link_to_obudowa_stala" type="fixed">
+    <parent link="base_link"/>
+    <child link="base_link1"/>
+  </joint>
+  <link
+    name="base_link1">
+    <inertial>
+      <origin
+        xyz="-0.0737103376032669 -0.443606940926552 0.223721880926158"
+        rpy="0 0 0" />
+      <mass
+        value="0.615009471886844" />
+      <inertia
+        ixx="0.0110641956588232"
+        ixy="6.40144380205611E-06"
+        ixz="-2.11990868364927E-06"
+        iyy="0.02551181555329"
+        iyz="0.00197279935789614"
+        izz="0.0294983926540014" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://model_wozek/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://model_wozek/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="mocowanie_kola">
+    <inertial>
+      <origin
+        xyz="-0.0305709417975626 -0.104339041189641 -0.000121024696440028"
+        rpy="0 0 0" />
+      <mass
+        value="1.60598987281056" />
+      <inertia
+        ixx="0.00975232787640631"
+        ixy="0.00142116547654286"
+        ixz="6.34610784377857E-06"
+        iyy="0.00450587225210306"
+        iyz="1.0085499957309E-05"
+        izz="0.0120912460141097" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://model_wozek/meshes/mocowanie_kola.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://model_wozek/meshes/mocowanie_kola.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_1"
+    type="revolute">
+    <calibration rising="0.0"/>
+    <dynamics damping="0.0" friction="0.0"/>
+    <limit effort="30" velocity="1.0" lower="-1.2217" upper="1.2217" />
+    <safety_controller k_velocity="10" k_position="15" soft_lower_limit="-1.2217" soft_upper_limit="1.2217" />
+    <origin
+      xyz="-0.0737643255300763 -0.516403702807297 0.38"
+      rpy="1.5707963267949 0 -1.57952297305487" />
+    <parent
+      link="base_link1" />
+    <child
+      link="mocowanie_kola" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="kierownica">
+    <inertial>
+      <origin
+        xyz="-0.0115895138106791 0.50728178218182 -9.81603283305155E-06"
+        rpy="0 0 0" />
+      <mass
+        value="1.53170272477125" />
+      <inertia
+        ixx="0.14966688630378"
+        ixy="0.0024222842098431"
+        ixz="-3.07898030738919E-08"
+        iyy="0.0132691843751785"
+        iyz="2.656548503388E-06"
+        izz="0.136873705051824" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://model_wozek/meshes/kierownica.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://model_wozek/meshes/kierownica.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_3"
+    type="revolute">
+    <calibration rising="0.0"/>
+    <dynamics damping="0.0" friction="1.0"/>
+    <limit effort="30" velocity="1.0" lower="0.0" upper="1.5707" />
+    <safety_controller k_velocity="10" k_position="15" soft_lower_limit="0.0" soft_upper_limit="1.5707" />
+    <origin
+      xyz="-0.1 -0.0090182 0"
+      rpy="0 0 0" />
+    <parent
+      link="mocowanie_kola" />
+    <child
+      link="kierownica" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="duze_kolo">
+    <inertial>
+      <origin
+        xyz="2.63122856836162E-14 1.01307850997046E-13 0.000969624160996246"
+        rpy="0 0 0" />
+      <mass
+        value="1.24150418188688" />
+      <inertia
+        ixx="0.00287265555578355"
+        ixy="0"
+        ixz="-1.48061359180052E-18"
+        iyy="0.00287265555578355"
+        iyz="-2.99849663328022E-19"
+        izz="0.00481686807121248" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://model_wozek/meshes/duze_kolo.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://model_wozek/meshes/duze_kolo.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_4"
+    type="continuous">
+    <origin
+      xyz="0 -0.29902 0"
+      rpy="-3.1416 0 2.8874" />
+    <parent
+      link="mocowanie_kola" />
+    <child
+      link="duze_kolo" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="widly">
+    <inertial>
+      <origin
+        xyz="-1.552191006629578 -0.370692042562407 -0.277091173145058"
+        rpy="0 0 0" />
+      <mass
+        value="21.5594545302007" />
+      <inertia
+        ixx="2.94533193209688"
+        ixy="-0.00483019111637182"
+        ixz="-0.00875691660317464"
+        iyy="3.06560711742024"
+        iyz="-0.58654146127803"
+        izz="1.04698641521821" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 -0.49 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://model_wozek/meshes/widly.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://model_wozek/meshes/widly.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_2"
+    type="prismatic">
+    <origin
+      xyz="-0.62468 -0.61637 0.59057"
+      rpy="1.5708 0 -3.1409" />
+    <parent
+      link="base_link1" />
+    <child
+      link="widly" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-0.02"
+      upper="0.05"
+      effort="100"
+      velocity="100" />
+    <calibration
+      rising="10"
+      falling="10" />
+    <dynamics
+      damping="10"
+      friction="10" />
+    <safety_controller
+      soft_upper_limit="1"
+      soft_lower_limit="-1"
+      k_position="10"
+      k_velocity="10" />
+  </joint>
+  <link
+    name="LM1">
+    <inertial>
+      <origin
+        xyz="0.0232153432007025 -0.0519178569819828 -4.9960036108132E-16"
+        rpy="0 0 0" />
+      <mass
+        value="0.205906284304724" />
+      <inertia
+        ixx="0.000564551589227288"
+        ixy="1.46160580103484E-05"
+        ixz="-3.9200949496725E-18"
+        iyy="0.000854042670025481"
+        iyz="-6.12171555932119E-19"
+        izz="0.000367886574513033" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://model_wozek/meshes/LM1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.125490196078431 0.125490196078431 0.125490196078431 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://model_wozek/meshes/LM1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_5"
+    type="revolute">
+    <calibration rising="0.0"/>
+    <dynamics damping="0.0" friction="1.0"/>
+    <limit effort="30" velocity="1.0" lower="0.87" upper="0.0" />
+    <safety_controller k_velocity="10" k_position="15" soft_lower_limit="-0.87" soft_upper_limit="0.0" />
+    <mimic joint="joint_2" multiplier = "-12"/>
+    <origin
+      xyz="-0.74988 -0.5045 -0.98578"
+      rpy="0 1.5708 0" />
+    <parent
+      link="widly" />
+    <child
+      link="LM1" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="LM2">
+    <inertial>
+      <origin
+        xyz="0 0 -0.00100000000000013"
+        rpy="0 0 0" />
+      <mass
+        value="0.0799092879672439" />
+      <inertia
+        ixx="0.000171621704838005"
+        ixy="-7.3476946692554E-20"
+        ixz="-1.33230341669221E-18"
+        iyy="0.000267347952208344"
+        iyz="-1.51749785732926E-19"
+        izz="0.000108157119089532" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://model_wozek/meshes/LM2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://model_wozek/meshes/LM2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_7"
+    type="revolute">
+    <calibration rising="0.0"/>
+    <dynamics damping="0.0" friction="1.0"/>
+    <limit effort="30" velocity="1.0" lower="0.87" upper="0.0" />
+    <safety_controller k_velocity="10" k_position="15" soft_lower_limit="0.77" soft_upper_limit="0.0" />
+    <mimic joint="joint_2" multiplier = "12"/>
+    <origin
+      xyz="0.11 -0.055 0"
+      rpy="0 0 0" />
+    <parent
+      link="LM1" />
+    <child
+      link="LM2" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="LK1">
+    <inertial>
+      <origin
+        xyz="0 5.55111512312578E-17 7.2626514638463E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.426330913884975" />
+      <inertia
+        ixx="0.000470662693708433"
+        ixy="-3.65363686588813E-21"
+        ixz="-2.84407193908392E-18"
+        iyy="0.000470662693708433"
+        iyz="-1.82807544270046E-19"
+        izz="0.000342285750762482" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://model_wozek/meshes/LK1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.815686274509804 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://model_wozek/meshes/LK1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_9"
+    type="continuous">
+    <mimic joint="joint_4" multiplier="20" />
+    <origin
+      xyz="-0.04 0 -0.001"
+      rpy="0 0 0" />
+    <parent
+      link="LM2" />
+    <child
+      link="LK1" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="LK2">
+    <inertial>
+      <origin
+        xyz="2.22044604925031E-16 0 7.26265146384075E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.426330913884975" />
+      <inertia
+        ixx="0.000470662693708433"
+        ixy="-3.65363686588813E-21"
+        ixz="-2.84400576463492E-18"
+        iyy="0.000470662693708433"
+        iyz="-1.82807544270046E-19"
+        izz="0.000342285750762482" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://model_wozek/meshes/LK2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.815686274509804 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://model_wozek/meshes/LK2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_10"
+    type="continuous">
+    <mimic joint="joint_9" multiplier="1" />
+    <origin
+      xyz="0.04 0 -0.001"
+      rpy="0 0 0" />
+    <parent
+      link="LM2" />
+    <child
+      link="LK2" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="PM1">
+    <inertial>
+      <origin
+        xyz="0.0232153432007027 -0.051917856981983 -6.10622663543836E-16"
+        rpy="0 0 0" />
+      <mass
+        value="0.205906284304724" />
+      <inertia
+        ixx="0.000564551589227288"
+        ixy="1.46160580103484E-05"
+        ixz="-4.46193133811924E-18"
+        iyy="0.00085404267002548"
+        iyz="-4.77984662602542E-19"
+        izz="0.000367886574513033" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://model_wozek/meshes/PM1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.125490196078431 0.125490196078431 0.125490196078431 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://model_wozek/meshes/PM1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_6"
+    type="revolute">
+    <calibration rising="0.0"/>
+    <dynamics damping="0.0" friction="1.0"/>
+    <limit effort="30" velocity="1.0" lower="0.87" upper="0.0" />
+    <safety_controller k_velocity="10" k_position="15" soft_lower_limit="-0.87" soft_upper_limit="0.0" />
+    <mimic joint="joint_2" multiplier = "-12"/>
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-0.87"
+      upper="0.0"
+      effort="100"
+      velocity="100" />
+    <calibration
+      rising="10"
+      falling="10" />
+    <dynamics
+      damping="10"
+      friction="10" />
+    <safety_controller
+      soft_upper_limit="1"
+      soft_lower_limit="-1"
+      k_position="10"
+      k_velocity="10" />
+    <origin
+      xyz="-0.35188 -0.5045 -0.98578"
+      rpy="0 1.5708 0" />
+    <parent
+      link="widly" />
+    <child
+      link="PM1" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="PM2">
+    <inertial>
+      <origin
+        xyz="0 0 0.000999999999999834"
+        rpy="0 0 0" />
+      <mass
+        value="0.079909287967244" />
+      <inertia
+        ixx="0.000171621704838005"
+        ixy="-9.6426931701336E-20"
+        ixz="-1.48200325522961E-18"
+        iyy="0.000267347952208345"
+        iyz="-5.85646159915377E-20"
+        izz="0.000108157119089532" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://model_wozek/meshes/PM2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://model_wozek/meshes/PM2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_8"
+    type="revolute">
+    <calibration rising="0.0"/>
+    <dynamics damping="0.0" friction="1.0"/>
+    <limit effort="30" velocity="1.0" lower="0.87" upper="0.0" />
+    <safety_controller k_velocity="10" k_position="15" soft_lower_limit="0.7" soft_upper_limit="0.0" />
+    <mimic joint="joint_2" multiplier = "12"/>
+    <origin
+      xyz="0.11 -0.055 0"
+      rpy="0 0 0" />
+    <parent
+      link="PM1" />
+    <child
+      link="PM2" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="PK1">
+    <inertial>
+      <origin
+        xyz="2.22044604925031E-16 5.55111512312578E-17 7.2626514638463E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.426330913884975" />
+      <inertia
+        ixx="0.000470662693708434"
+        ixy="-3.6532427296203E-21"
+        ixz="-3.20200953374787E-18"
+        iyy="0.000470662693708434"
+        iyz="-1.83385250169734E-19"
+        izz="0.000342285750762482" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://model_wozek/meshes/PK1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.815686274509804 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://model_wozek/meshes/PK1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_11"
+    type="continuous">
+    <mimic joint="joint_4" multiplier="20" />
+    <origin
+      xyz="-0.04 0 0.001"
+      rpy="0 0 0" />
+    <parent
+      link="PM2" />
+    <child
+      link="PK1" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="PK2">
+    <inertial>
+      <origin
+        xyz="-2.22044604925031E-16 5.55111512312578E-17 7.26265146384075E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.426330913884975" />
+      <inertia
+        ixx="0.000470662693708434"
+        ixy="-3.6532427296203E-21"
+        ixz="-3.20200953374787E-18"
+        iyy="0.000470662693708434"
+        iyz="-1.83385250169734E-19"
+        izz="0.000342285750762482" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://model_wozek/meshes/PK2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.815686274509804 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://model_wozek/meshes/PK2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_12"
+    type="continuous">
+    <mimic joint="joint_11" multiplier="1" />
+    <origin
+      xyz="0.04 0 0.001"
+      rpy="0 0 0" />
+    <parent
+      link="PM2" />
+    <child
+      link="PK2" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+</robot>

@@ -1,0 +1,157 @@
+#!/usr/bin/env python3
+import os
+import rospy
+from pyModbusTCP.client import ModbusClient
+from bitstring import BitArray
+from std_msgs.msg import Bool
+
+
+def flexisickconnection():
+    #Inicjacja node'a
+    rospy.init_node('flexisoftconnection', anonymous=True)
+    #deklaracja połączenia - adres ip oraz port
+    gmod_address = "192.168.1.11"
+    gmod_port = 502
+    #połączenie
+    gmod = ModbusClient(gmod_address, gmod_port)
+    bytes_to_send = [0] * 5
+    #Deklaracja potrzebnych zmiennych
+    rospy.loginfo("Start programu")
+    #częstotliwość odświeżania
+    rate = rospy.Rate(10) # 1hz
+    while not rospy.is_shutdown():
+        gmod.open()
+        rospy.loginfo("Status modulow safety:")
+        #Odczyt z bramki FXCPU
+        try: 
+            safety_pub = rospy.Publisher('safety_status', Bool, queue_size=1)
+
+            safety_diagnose = gmod.read_holding_registers(1099, 1)
+            gmod._can_read == True
+            test = 0
+            #Konwersja danych 8bit - bin - int
+            safety_diagnose_bin_tmp = bin(safety_diagnose[0])
+            safety_diagnose_bin = safety_diagnose_bin_tmp[2:]
+            rospy.loginfo(len(safety_diagnose_bin))
+            rospy.loginfo(safety_diagnose)
+            if len(safety_diagnose_bin) < 8:
+                safety_diagnose_bin = "0" + safety_diagnose_bin
+            safety = int(safety_diagnose_bin[0])
+            safety0 = int(safety_diagnose_bin[1])
+            safety1 = int(safety_diagnose_bin[7])
+            safety2 = int(safety_diagnose_bin[6])
+            safety3 = int(safety_diagnose_bin[5])
+            safety4 = int(safety_diagnose_bin[4])
+            safety5 = int(safety_diagnose_bin[3])
+            safety6 = int(safety_diagnose_bin[2])
+            #Warunki przełczania stanów
+            if safety == 1:
+                standstill = True
+                rospy.loginfo("Forklift stopped")
+            if safety == 0:
+                standstill = False
+                rospy.loginfo("Forklift in motion")
+            if safety0 == 1:
+                flexi_cpu_ok = True
+                rospy.loginfo("FlexiSoft: OK")
+            if safety0 == 0:
+                flexi_cpu_ok = False
+                message0 = "Error in FlexiSoft"
+                rospy.loginfo(message0)
+            if safety1 == 1:
+                emergency_button_left = True
+                rospy.loginfo("E-stop left: OK")
+            if safety1 == 0:
+                emergency_button_left = False
+                message = "Left emergency brake pressed"
+                rospy.loginfo(message)
+            if safety2 == 1:
+                emergency_button_right = True
+                rospy.loginfo("E-stop right: OK")
+            if safety2 == 0:
+                emergency_button_right = False
+                message1 = "Right emergency brake pressed"
+                rospy.loginfo(message1)
+            if safety3 == 1:
+                scanner_left = True
+                rospy.loginfo("Scanner left: OK" )
+            if safety3 == 0:
+                scanner_left = False
+                message2 = "Left scanner stopped motion"
+                rospy.loginfo(message2)
+            if safety4 == 1:
+                scanner_right = True
+                rospy.loginfo("Scanner right: OK" )
+            if safety4 == 0:
+                scanner_right = False
+                message3 = "Right scanner stopped motion"
+                rospy.loginfo(message3)
+            if safety5 == 1:
+                speed_safe = False
+                message4 = "Maximum speed limiter active"
+                rospy.loginfo(message4)
+            if safety5 == 0:
+                speed_safe = True
+                rospy.loginfo("Safe speed: OK")
+            if safety6 == 1:
+                encoder_ok = True
+                rospy.loginfo("Encoder ok: OK")
+            if safety6 == 0:
+                encoder_ok = False
+                message5 = "Encoder fault"
+                rospy.loginfo(message5)
+            #WYSYŁANIE DO BRAMY MODBUS FLEXICPU
+            word0 = BitArray(16)
+            word0_conv = 0
+            word1_conv = 0
+            word2_conv = 0
+            word3_conv = 0
+            word4_conv = 0
+            #Przypisanie stanów - testowo są to wartości odczytane
+            word0[15] = int(safety_diagnose_bin[0])
+            word0[14] = int(safety_diagnose_bin[1])
+            word0[13] = int(safety_diagnose_bin[2])
+            word0[12] = int(safety_diagnose_bin[3])
+            word0[11] = int(safety_diagnose_bin[4])
+            word0[10] = int(safety_diagnose_bin[5])
+            word0[9] = int(safety_diagnose_bin[6])
+            word0[8] = int(safety_diagnose_bin[7])
+            #konwersja bit na int 0-65535
+            for bit in word0:
+                word0_conv = (word0_conv << 1) | bit
+            if flexi_cpu_ok and emergency_button_left and emergency_button_right and scanner_left and scanner_right and speed_safe and encoder_ok:
+                safety_ok = True
+            else:
+                safety_ok = False
+            safety_pub.publish(safety_ok)
+            #Stworzenie tabeli do wysyłania
+            
+            bytes_to_send[0] = word0_conv
+            bytes_to_send[1] = word1_conv
+            bytes_to_send[2] = word2_conv
+            bytes_to_send[3] = word3_conv
+            bytes_to_send[4] = word4_conv
+            gmod.write_multiple_registers(2099, bytes_to_send)
+            rospy.loginfo(bytes_to_send)
+            test1 = gmod.last_error()
+            rospy.loginfo(test1)
+            rate.sleep()
+            
+            #czyszczenie konsoli
+            clear = lambda: os.system('clear')
+            clear()
+        except gmod.is_open == False:
+
+            rospy.loginfo("Blad")
+            
+    gmod.close()
+
+
+
+
+if __name__ == '__main__':
+    try:
+        flexisickconnection()
+    except rospy.ROSInterruptException as e:
+        rospy.logerr("Encoder error: %s" % e)
+        

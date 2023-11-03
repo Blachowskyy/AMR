@@ -1,0 +1,12 @@
+<launch>
+
+  <node pkg="robot_dhi_1" type="ConnectionDeltaPLC.py" name="ConnectionDeltaPLC" output="screen" />
+  <node pkg="robot_dhi_1" type="WorkstatesSelector.py" name="WorkstateSelector" />
+  <node pkg="robot_dhi_1" type="SensorsConverter.py" name="SensorsConverter" />
+  <node pkg="robot_dhi_1" type="ConnectionFlexisoft.py" name="flexiConnectionFlexisoftsoft" output="screen" />
+  <node pkg="robot_dhi_1" type="NFCServices.py" name="NFCServices" output="screen" />
+  <!-- <node pkg="robot_dhi_1" type="ConnectionServer.py" name="ConnectionServer" /> -->
+
+
+
+</launch>

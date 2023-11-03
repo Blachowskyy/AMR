@@ -1,0 +1,8 @@
+prefix=/usr/local
+
+Name: robot_dhi_1
+Description: Description of robot_dhi_1
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: geometry_msgs move_base nav_msgs roscpp rospy sensor_msgs std_msgs tf tf2_ros message_runtime

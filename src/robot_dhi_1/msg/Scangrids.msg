@@ -1,0 +1,5 @@
+ScangridData LeftScanner
+ScangridData RightScanner
+ScangridSteering Steering
+ScangridStatus LeftScannerStatus
+ScangridStatus RightScannerStatus

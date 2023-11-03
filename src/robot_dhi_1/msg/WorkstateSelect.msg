@@ -1,0 +1,16 @@
+bool AutoMode
+bool ManualModeFromFMS
+bool IniDiagCompleted
+bool StartNavride
+bool FinishNavride
+bool StartCharging
+bool FinishCharging
+bool StartMagazineGetCargo
+bool FinishMagazineGetCargo
+bool StartMagazineLeaveCargo
+bool FinishMagazineLeaveCargo
+bool StartNestGetCargo
+bool FinishNestGetCargo
+bool StartNestLeaveCargo
+bool FinishNestLeaveCargo
+bool ReinitializeAutoMode

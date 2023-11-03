@@ -1,0 +1,52 @@
+<launch>
+
+   <!-- <master auto="start"/> -->
+   
+   <node pkg="tf" type="static_transform_publisher" name="map_scanmatcher_broadcaster" args="0 0 0 0 0 0 map scanmatcher_frame 100"/>
+   <node pkg="tf" type="static_transform_publisher" name="map_to_base_link_broadcaster" args="0 0 0 0 0 0 map base_link 100"/>
+   <node pkg="tf" type="static_transform_publisher" name="base_to_scan_broadcaster" args="0 0 0 0 0 0 base_link scan 100"/>
+   
+   
+ <!-- Run the map server --> 
+   <node name="map_server" pkg="map_server" type="map_server" args="$(find costmap_2d)/test_amcl/map.yaml"/>
+
+   <!-- <arg name="map_file" default="$(find costmap_2d)/test_amcl/czesio.yaml"/> -->
+   <!-- <arg name="scan_topic" default="sick_safetyscanners/scan"/>
+   <arg name="base_frame" default="base_link"/>
+   <arg name="odom_frame" default="odom"/> -->
+   <!-- <arg name="initial_pose_x" default="0.0"/>
+   <arg name="initial_pose_y" default="0.0"/>
+   <arg name="initial_pose_a" default="0.0"/> -->
+   
+
+   
+   <node pkg="amcl" type="amcl" name="amcl" output="screen" >
+
+      <remap from="scan" to="/sick_safetyscanners/scan"/> 
+   </node>
+
+ <!-- Run AMCL --> 
+   <!-- <include file="$(find amcl)/examples/amcl_omni.launch" />  -->
+   
+   <!-- <node pkg="amcl" type="amcl" name="amcl_omni.launch" output="screen"> -->
+   <!-- <node pkg="amcl" type="amcl" name="amcl" output="screen">
+      <param name="use_map_topic" value="true"/>
+      <remap from="scan" to="/sick_safetyscanners/scan"/>
+      <remap from="map" to="loc_map"/>
+   </node>
+    -->
+      
+     
+
+   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen" >
+      <rosparam file="$(find costmap_2d)/test_amcl/costmap_common_params.yaml" command="load" ns="global_costmap" /> 
+      <rosparam file="$(find costmap_2d)/test_amcl/costmap_common_params.yaml" command="load" ns="local_costmap" />
+
+      <rosparam file="$(find costmap_2d)/test_amcl/local_costmap_params.yaml" command="load" />
+      <rosparam file="$(find costmap_2d)/test_amcl/global_costmap_params.yaml" command="load" />
+
+      <rosparam file="$(find costmap_2d)/test_amcl/base_local_planner.yaml" command="load" />
+   </node> 
+   
+   
+</launch> 

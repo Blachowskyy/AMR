@@ -1,0 +1,64 @@
+<launch>
+<!-- Transformation Configuration ... Setting Up the Relationships Between Coordinate Frames --> 
+
+  <include file="$(find robot_dhi_1)/tf/tf_test.launch" />  
+ <!-- Data transmision between ROS and PLC - (Curtis - Servo) -->  
+  <!-- Subscribe: /comand_curtis_vel, /comand_servo_angle -->
+  <!-- Publish: /wozek_angle_tick, servo_angle_tick-->
+  <node pkg="robot_dhi_1" type="wozek_backup.py" name="wozek_backup" output="screen"/>
+  
+  
+  <!-- Wheel Odometry Publisher -->
+  <!-- Subscribe: /enkoder_tic, /servo_angle, /initial_2d -->
+  <!-- Publish: /odom_data_euler, /odom_data_quat -->
+  <!-- odom to base_footprint transform publisher -->
+  <node pkg="robot_dhi_1" type="odom_pub" name="odom_pub">
+  </node> 
+  
+ 
+    
+  <!-- Initial Pose and Goal Publisher -->
+  <!-- Publish: /initialpose, /move_base_simple/goal -->
+  <node pkg="rviz" type="rviz" name="rviz" respawn="false" args="-d $(find robot_dhi_1)/param/biuro.rviz">
+  </node>  
+  
+
+  <!-- Subscribe: /initialpose, /move_base_simple/goal -->
+  <!-- Publish: /initial_2d, /goal_2d --> 
+  <node pkg="robot_dhi_1" type="rviz_click_to_2d" name="rviz_click_to_2d">
+  </node>  
+  
+ <!-- <remap from="/sick_safetyscanners/scan/" to="/scan"/> -->
+  
+  <!-- <include file="$(find ira_laser_tools)/launch/laserscan_multi_merger.launch"/> -->
+
+ <!-- Lidar Data Publisher Using sick_safetyscanners -->
+  <!-- Used for obstacle avoidance and can be used for mapping --> 
+  <!-- Publish: /scan -->
+  
+  <!-- <include file="$(find sick_safetyscanners)/launch/sensor_1.launch"/> -->
+  <!-- <include file="$(find sick_safetyscanners)/launch/sensor_2.launch"/> -->
+
+<!-- Map Server -->
+  <!-- Publish: /map, /map_metadata -->
+  <node pkg="map_server" name="map_server" type="map_server" args="$(find robot_dhi_1)/param/map_hala2.yaml"/>
+  <!-- <arg name="map_file" default="$(find navigation_data_pub)/maps/floorplan4.yaml"/> -->
+  
+<!-- Add AMCL example for differential drive robots for Localization -->
+  <!-- Subscribe: /scan, /tf, /initialpose, /map -->
+  <!-- Publish: /amcl_pose, /particlecloud, /tf -->
+  <!-- <include file="$(find amcl)/examples/amcl_diff.launch"/> -->
+	
+  <!-- Move Base Node -->
+  <!-- Subscribe: /move_base_simple/goal -->
+  <!-- Publish: /cmd_vel -->
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <rosparam file="$(find robot_dhi_1)/param/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find robot_dhi_1)/param/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find robot_dhi_1)/param/local_costmap_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find robot_dhi_1)/param/global_costmap_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find robot_dhi_1)/param/base_local_planner_params.yaml" command="load" />
+  </node>
+
+  
+  </launch>

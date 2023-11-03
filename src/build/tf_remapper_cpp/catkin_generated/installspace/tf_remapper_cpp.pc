@@ -1,0 +1,8 @@
+prefix=/usr/local
+
+Name: tf_remapper_cpp
+Description: Description of tf_remapper_cpp
+Version: 1.1.1
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib -ltf_remapper_cpp
+Requires: xmlrpcpp roscpp tf2_msgs

@@ -1,0 +1,40 @@
+<launch>
+  <include file="$(find sick_lidar_localization)/launch/sick_lidar_localization.launch" />
+  <include file="$(find robot_dhi_1)/tf/tf_test.launch" />  
+ 
+  <node pkg="robot_dhi_1" type="EncoderConverter.py" name="EncoderConverter"/>
+  <node pkg="robot_dhi_1" type="DriveController.py" name="DriveControler" />
+  <node pkg="robot_dhi_1" type="base_controler" name="base_controler" />
+
+  <node pkg="robot_dhi_1" type="odom_pub" name="odom_pub"/>
+
+  <node pkg="rviz" type="rviz" name="rviz" respawn="false" args="-d $(find robot_dhi_1)/param_old/biuro.rviz">
+  </node>  
+  
+  <node pkg="robot_dhi_1" type="rviz_click_to_2d" name="rviz_click_to_2d">
+  </node>  
+
+  <include file="$(find sick_safetyscanners)/launch/sensor_1.launch"/>
+  <include file="$(find sick_safetyscanners)/launch/sensor_2.launch"/>
+  <include file="$(find ira_laser_tools)/launch/laserscan_multi_merger.launch"/>
+  
+  <node pkg="map_server" name="map_server" type="map_server" args="$(find robot_dhi_1)/maps/hala5cmedit.yaml"/>
+
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <rosparam file="$(find robot_dhi_1)/param/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find robot_dhi_1)/param/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find robot_dhi_1)/param/local_costmap_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find robot_dhi_1)/param/global_costmap_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find robot_dhi_1)/param/teb_local_planner_params.yaml" command="load" />
+    <rosparam file="$(find robot_dhi_1)/param/move_base_params.yaml" command="load" />
+		<param name="base_global_planner" value="global_planner/GlobalPlanner" />
+		<param name="planner_frequency" value="0.50" />
+		<param name="planner_patience" value="5.0" />
+
+		<param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" />
+		<param name="controller_frequency" value="2.0" />
+		<param name="controller_patience" value="5.0" />
+
+    <param name="clearing_rotation_allowed" value="false" /> 
+  </node>  
+</launch>

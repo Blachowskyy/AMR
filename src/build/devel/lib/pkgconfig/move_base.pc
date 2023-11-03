@@ -1,0 +1,8 @@
+prefix=/home/ros/catkin_ws/src/build/devel
+
+Name: move_base
+Description: Description of move_base
+Version: 1.17.2
+Cflags: -I/home/ros/catkin_ws/src/build/devel/include -I/home/ros/catkin_ws/src/navigation/move_base/include -I/usr/include/eigen3
+Libs: -L${prefix}/lib -lmove_base
+Requires: dynamic_reconfigure geometry_msgs move_base_msgs nav_msgs roscpp
